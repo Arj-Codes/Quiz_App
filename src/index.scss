@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap");
+:root {
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Playfair Display", serif;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-default);
+  background:linear-gradient(rgb(0, 153, 255),rgb(4, 62, 124)); 
+}
+.App{
+  height:97.61vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+.quizbeg {
+  @include tablet{
+    margin: 23% 0;
+  }
+  @include mobile{
+    margin: 35% 0;
+  }
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .quizbeg__wrapper {
+    @include tablet{
+      width:70%;
+    }
+    @include mobile{
+      text-align: center;
+    }
+    width:50%;
+    padding: 1%;
+    height: auto;
+    border-radius: 30px;
+    background: rgb(1, 40, 78);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 10px 10px 25px rgb(1,40,78);
+    transition: transform 0.3s;
+    &:hover{
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+    h2 {
+      margin-bottom: 10%;
+    }
+    button{
+      font-size:20px;
+      padding:2%;
+      margin:2% 0;
+      border-radius: 15px;
+      background-color:rgb(1, 40, 78);
+      color:white;
+      border:2px solid rgb(0,153,255);
+      font-weight:bold;
+      cursor:pointer;
+      
+      &:hover{
+        cursor: pointer;
+        background-color:white;color: rgb(1, 40, 78);
+      }
+
+      
+    }
+    .sub1{
+      width:80%;
+      display: flex;
+      justify-content: space-between;
+      @include mobile{
+        width:100%;
+      }
+    }
+    .g1{
+      width:50%;
+      display: flex;
+      flex-direction: column;
+      margin:2%;
+      padding:2%;
+      @include mobile{
+        padding:0;
+        margin:0;
+      }
+    }
+  }
+}
