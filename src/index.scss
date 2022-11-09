@@ -77,10 +77,6 @@ h6 {
     h2 {
       margin-bottom: 10%;
     }
-    // .ans1,
-    // .ans2,
-    // .ans3,
-    // .ans4,
     .submit,
     .next,
     .prev {
@@ -99,6 +95,9 @@ h6 {
         background-color: white;
         color: rgb(1, 40, 78);
       }
+    }
+    .next,.prev{
+      margin: 2% 8%;
     }
     .sub1 {
       width: 80%;
@@ -150,8 +149,8 @@ h6 {
 }
 
 .selected {
-  color: black;
-  background-color: rgb(0, 195, 255);
+  color: rgb(1, 40, 78);
+  background-color: white;
   font-size: 20px;
   padding: 2%;
   margin: 2% 0;
@@ -163,7 +162,7 @@ h6 {
 .notselected {
   font-size: 20px;
   padding: 2%;
-  margin: 2% 0;
+  margin: 2% 0%;
   border-radius: 15px;
   background-color: rgb(1, 40, 78);
   color: white;

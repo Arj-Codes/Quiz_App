@@ -5,47 +5,51 @@ const questions = [
     question:
       "Which of the following is used in React.js to increase performance?",
     options: [
-      { q: 1, text: "Virtual DOM", isCorrect: true },
-      { q: 2, text: "Original DOM", isCorrect: false },
-      { q: 3, text: "Both of the above", isCorrect: false },
-      { q: 4, text: "None of the above", isCorrect: false },
+      { q: 1, text: "Virtual DOM",},
+      { q: 2, text: "Original DOM",},
+      { q: 3, text: "Both of the above",},
+      { q: 4, text: "None of the above",},
     ],
     selected: 0,
+    isCorrect:1,
   },
 
   {
     id: 2,
     question: "What is ReactJS?",
     options: [
-      { q: 1, text: "Server-Side Framework", isCorrect: false },
-      { q: 2, text: "User Interface Framework", isCorrect: true }, //correct
-      { q: 3, text: "Both of the above", isCorrect: false },
-      { q: 4, text: "None of the above", isCorrect: false },
+      { q: 1, text: "Server-Side Framework",},
+      { q: 2, text: "User Interface Framework",}, //correct
+      { q: 3, text: "Both of the above",},
+      { q: 4, text: "None of the above",},
     ],
     selected: 0,
+    isCorrect:2,
   },
   {
     id: 3,
     question: "What is Babel?",
     options: [
-      { q: 1, text: "JaveScript Compiler", isCorrect: true }, //correct
-      { q: 2, text: "JaveScript Interpreter", isCorrect: false },
-      { q: 3, text: "JavaScript Transpiler", isCorrect: false },
-      { q: 4, text: "None", isCorrect: false },
+      { q: 1, text: "JaveScript Compiler",}, //correct
+      { q: 2, text: "JaveScript Interpreter",},
+      { q: 3, text: "JavaScript Transpiler",},
+      { q: 4, text: "None",},
     ],
     selected: 0,
+    isCorrect:1,
   },
   {
     id: 4,
     question:
       "Identify the one which is used to pass data to components from outside",
     options: [
-      { q: 1, text: "Render with arguments", isCorrect: false },
-      { q: 2, text: "setState", isCorrect: false },
-      { q: 3, text: "PropTypes", isCorrect: false },
-      { q: 4, text: "props", isCorrect: true }, //correct
+      { q: 1, text: "Render with arguments",},
+      { q: 2, text: "setState",},
+      { q: 3, text: "PropTypes",},
+      { q: 4, text: "props",}, //correct
     ],
     selected: 0,
+    isCorrect:4,
   },
 ];
 const About = () => {
@@ -71,10 +75,10 @@ const About = () => {
     }
   };
 
-  const handleScore = (o) => {
-    console.log("click 1");
-    if (o.isCorrect === true) {
-      console.log("yes");
+  const handleScore = (o,q) => {
+    if(q.selected===0){
+    console.log("0");
+    if (q.isCorrect ===o.q) {
       setscore(score + 1);
       if (qid === questions.length) {
         setqid(1);
@@ -82,13 +86,27 @@ const About = () => {
       }
       setqid(qid + 1);
     } else {
-      console.log("Wrong answer");
       if (qid === questions.length) {
         setqid(1);
         return;
       }
       setqid(qid + 1);
     }
+    }
+    else{
+      if(o.q!==q.selected && o.q!==q.isCorrect){
+        setscore(score-1);
+      }
+      else if(o.q!==q.selected && o.q===q.isCorrect){
+        setscore(score+1);
+      }
+      if (qid === questions.length) {
+        setqid(1);
+        return;
+      }
+      setqid(qid + 1);
+    }
+    
   };
 
   return (
@@ -101,7 +119,7 @@ const About = () => {
                 <>
                   <h1>Thank You for taking this quiz!</h1>
                   <h2>Here is your score : </h2>
-                  <h2>{score}/4</h2>
+                  <h2>{score}/{questions.length} : {`${score/4*100}`}%</h2>
                 </>
               ) : (
                 <>
@@ -128,8 +146,8 @@ const About = () => {
                             key={o.q}
                             onClick={(e) => {
                               e.preventDefault();
+                              handleScore(o,q);
                               q.selected = o.q;
-                              handleScore(o);
                             }}
                           >
                             {o.text}
