@@ -48,6 +48,7 @@ const About = () => {
   const [show, setShow] = useState(true);
   const [qid, setqid] = useState(1);
   const [score, setscore] = useState(1);
+  
 
   const handleqid = (a) => {
     if (a === "0") {
@@ -55,21 +56,22 @@ const About = () => {
         setqid(1);
         return;
       }
-
       setqid(qid + 1);
     } else if (a === "1") {
       if (qid === 1) {
+        
         setqid(questions.length);
         return;
       }
+     
       setqid(qid - 1);
     }
   };
 
   const handleScore = (isCorrect) => {  
     if(isCorrect===true){
+      console.log("yes");
       setscore(score+1);
-      console.log(score);
       if (qid === questions.length) {
         setqid(1);
         return;
@@ -82,10 +84,10 @@ const About = () => {
         setqid(1);
         return;
       }
-
       setqid(qid + 1);
     }
   }
+
   return (
     <>
       <div className="quizbeg">
@@ -105,7 +107,7 @@ const About = () => {
                         {q.id}. {q.question}
                       </h1>
                       <div className="g1">
-                        <button onClick={()=>handleScore(q.options.option_1.isCorrect)} className="ans1">
+                        <button className="ans1" onClick={()=>handleScore(q.options.option_1.isCorrect)} >
                           {q.options.option_1.text}
                         </button>
                         <button onClick={()=>handleScore(q.options.option_2.isCorrect)} className="ans2">
@@ -114,12 +116,16 @@ const About = () => {
                         <button onClick={()=>handleScore(q.options.option_3.isCorrect)} className="ans3">
                           {q.options.option_3.text}
                         </button>
-                        <button onClick={()=>handleScore(q.options.option_4.isCorrect)} className="ans4">
+                        <button onClick={()=>handleScore(q.options.option_4.isCorrect)}
+                       className="ans4">
                           {q.options.option_4.text}
                         </button>
                       </div>
                       <div className="sub1">
-                        <button
+
+                      {
+                        
+                        <button className="prev"
                           onClick={(e) => {
                             e.preventDefault();
                             handleqid("1");
@@ -127,7 +133,12 @@ const About = () => {
                         >
                           Prev Question
                         </button>
-                        <button
+                      }
+
+
+                        
+                         
+                        <button className="next"
                           onClick={(e) => {
                             e.preventDefault();
                             handleqid("0");
@@ -135,6 +146,7 @@ const About = () => {
                         >
                           Next Question
                         </button>
+                        
                       </div>
                     </>
                   )}
