@@ -77,7 +77,6 @@ const About = () => {
 
   const handleScore = (o,q) => {
     if(q.selected===0){
-    console.log("0");
     if (q.isCorrect ===o.q) {
       setscore(score + 1);
       if (qid === questions.length) {
@@ -150,7 +149,7 @@ const About = () => {
                               q.selected = o.q;
                             }}
                           >
-                            {o.text}
+                            {o.text}  
                           </button>
                         ))}
                       </div>
@@ -186,7 +185,8 @@ const About = () => {
 
           {done !== 2 ? (
             <>
-              <button
+            <div className={`${done===0?"button1":"button2"}`}>
+            <button
                 className="submit"
                 onClick={(e) => {
                   setDone(done + 1);
@@ -195,8 +195,23 @@ const About = () => {
                   setqid(1);
                 }}
               >
-                {show ? "Click Here!" : "Submit"}
+                {show ? "Take a quiz" : "Submit"}
               </button>
+              <button
+              className={`${
+                done===0 ? "submit" : "notsubmit"
+              }`}
+                onClick={(e) => {
+                  setDone(done + 1);
+                  e.preventDefault();
+                  setShow(!show);
+                  setqid(1);
+                }}
+              >
+                {show ? "Create new quiz" : "Submit"}
+              </button>
+            </div>
+              
             </>
           ) : (
             ""
