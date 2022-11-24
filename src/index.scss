@@ -58,6 +58,9 @@ h6 {
       // background: red;
       width:60%;
       justify-content: space-between;
+      button{
+        padding:3%;
+      }
     }
     .button2{
       width:20%;
@@ -193,3 +196,11 @@ h6 {
   }
 }
 
+.quesform1 {
+  .quesform1__wrapper {
+    .quesform{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

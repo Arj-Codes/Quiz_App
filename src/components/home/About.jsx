@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 const questions = [
   {
     id: 1,
@@ -53,11 +54,12 @@ const questions = [
   },
 ];
 const About = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(true);
   const [done, setDone] = useState(0);
   const [qid, setqid] = useState(1);
   const [score, setscore] = useState(0);
-
+  
   const handleqid = (a) => {
     if (a === "0") {
       if (qid === questions.length) {
@@ -106,6 +108,9 @@ const About = () => {
       setqid(qid + 1);
     }
     
+  };
+  const goQues = () =>{
+    navigate("/Quesform");
   };
 
   return (
@@ -206,9 +211,10 @@ const About = () => {
                   e.preventDefault();
                   setShow(!show);
                   setqid(1);
+                  goQues();
                 }}
               >
-                {show ? "Create new quiz" : "Submit"}
+                {show ? "Create new quiz" : "Submit"} 
               </button>
             </div>
               
