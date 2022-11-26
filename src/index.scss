@@ -78,6 +78,7 @@ h6 {
     }
     @include mobile {
       text-align: center;
+      width: 100%;
     }
     width: 40%;
     padding: 1%;
@@ -114,6 +115,9 @@ h6 {
         cursor: pointer;
         background-color: white;
         color: rgb(1, 40, 78);
+      }
+      @include mobile{
+        margin: 0 5%;
       }
     }
     .next,
@@ -212,6 +216,12 @@ h6 {
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
+  }
+  @include mobile{
+    width: 90%;
+  }
+  @include tablet{
+    width: 90%;
   }
   .quesform1__wrapper {
     width:100%;
